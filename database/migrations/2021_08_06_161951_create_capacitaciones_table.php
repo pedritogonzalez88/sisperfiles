@@ -15,11 +15,10 @@ class CreateCapacitacionesTable extends Migration
     {
         Schema::create('capacitaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_id');
             $table->string('Tema', 100);
             $table->date('Fecha');
             $table->timestamps();
-            $table->foreign('Funcionario_id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

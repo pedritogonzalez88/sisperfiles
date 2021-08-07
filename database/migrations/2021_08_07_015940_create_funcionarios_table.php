@@ -15,7 +15,7 @@ class CreateFuncionariosTable extends Migration
     {
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('Cedula')->unsigned;
+            $table->unsignedInteger('Cedula');
             $table->string('Nombre',60);
             $table->string('Apellido',60);
             $table->string('ImagenURL');
@@ -28,15 +28,7 @@ class CreateFuncionariosTable extends Migration
             $table->string('EmailParticular',100);
             $table->text('Observaciones');
             $table->boolean('Activo');
-            $table->bigInteger('Ciudad_Id')->unsigned;
-            $table->bigInteger('Barrio_Id')->unsigned;
-            $table->bigInteger('Pais_Id')->unsigned;
-            $table->bigInteger('Departamento_Id')->unsigned;
             $table->timestamps();
-            $table->foreign('Ciudad_Id')->references('id')->on('ciudades')->onDelete('cascade');
-            $table->foreign('Barrio_Id')->references('id')->on('barrios')->onDelete('cascade');
-            $table->foreign('Pais_Id')->references('id')->on('paises')->onDelete('cascade');
-            $table->foreign('Departamento_Id')->references('id')->on('departamentos')->onDelete('cascade');
 
         });
     }

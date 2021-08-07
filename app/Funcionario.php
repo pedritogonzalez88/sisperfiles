@@ -22,5 +22,34 @@ class Funcionario extends Model
     public function pais(){
         return $this->belongsTo(Pais::class);
     }
+    public function familiar()
+    {
+        return $this->hasMany(Familiar::class);
+    }
+    public function funcionpublica()
+    {
+        return $this->hasMany(FuncionPublica::class);
+    }
+    public function hijo()
+    {
+        return $this->hasMany(Hijo::class);
+    }
+    public function idioma()
+    {
+        return $this->hasMany(Idioma::class);
+    }
+    public function infomedica()
+    {
+        return $this->belongsTo(Info_Medica::class);
+    }
+    public function capacitacion()
+    {
+        return $this->hasMany(Capacitacion::class);
+    }
+    public function estudio_realizado()
+    {
+        return $this->hasMany(Estudio_Realizado::class);
+    }
+
 }
 
