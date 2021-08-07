@@ -15,12 +15,11 @@ class CreateExperienciasLaboralesTable extends Migration
     {
         Schema::create('experiencias_laborales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_Id')->unsigned;
             $table->string('Cargo', 100);
             $table->string('Entidad', 100);
             $table->string('TiempoTrabajado', 100);
             $table->timestamps();
-            $table->foreign('Funcionario_Id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

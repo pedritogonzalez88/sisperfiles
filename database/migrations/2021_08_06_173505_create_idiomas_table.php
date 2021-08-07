@@ -15,11 +15,10 @@ class CreateIdiomasTable extends Migration
     {
         Schema::create('idiomas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_Id')->unsigned;
             $table->string('Nivel', 100);
             $table->string('Nombre', 100);
             $table->timestamps();
-            $table->foreign('Funcionario_Id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

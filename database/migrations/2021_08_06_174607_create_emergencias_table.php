@@ -15,13 +15,12 @@ class CreateEmergenciasTable extends Migration
     {
         Schema::create('emergencias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_Id')->unsigned;
             $table->string('Nombre', 100);
             $table->string('Apellido', 100);
             $table->string('Telefono', 20);
             $table->string('Celular', 20);
             $table->timestamps();
-            $table->foreign('Funcionario_Id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

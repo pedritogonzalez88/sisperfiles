@@ -15,13 +15,12 @@ class CreateFamiliaresTable extends Migration
     {
         Schema::create('familiares', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_id')->unsigned;
             $table->string('Nombre',60);
             $table->string('Apellido',60);
             $table->string('TipoFamiliar');
             $table->timestamps();
 
-            $table->foreign('Funcionario_id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

@@ -15,16 +15,15 @@ class CreateConyugesTable extends Migration
     {
         Schema::create('conyuges', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_Id')->unsigned;
             $table->string('Nombre',60);
             $table->string('Apellido',60);
-            $table->integer('Cedula')->unsigned;
+            $table->unsignedInteger('Cedula');
             $table->string('Sexo',60);
             $table->string('Telefono',20);
             $table->string('Celular',20);
             $table->timestamps();
 
-            $table->foreign('Funcionario_id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

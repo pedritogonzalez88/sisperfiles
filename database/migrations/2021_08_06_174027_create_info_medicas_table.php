@@ -15,14 +15,13 @@ class CreateInfoMedicasTable extends Migration
     {
         Schema::create('info_medicas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionarios_Id')->unsigned;
             $table->string('GrupoSanguineo', 20);
             $table->string('Enfermedad', 100);
             $table->string('NombreSeguro', 100);
-            $table->bigInteger('NroCarnet')->unsigned;
+            $table->unsignedInteger('NroCarnet');
             $table->timestamps();
 
-            $table->foreign('Funcionario_Id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

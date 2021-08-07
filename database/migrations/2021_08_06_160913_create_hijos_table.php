@@ -15,15 +15,14 @@ class CreateHijosTable extends Migration
     {
         Schema::create('hijos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_Id')->unsigned;
             $table->string('Nombre',60);
             $table->string('Apellido',60);
-            $table->integer('Cedula')->unsigned;
+            $table->unsignedInteger('Cedula');
             $table->date('FechaNacimiento');
-            $table->integer('CantidadHijos')->unsigned;
+            $table->unsignedInteger('CantidadHijos');
             $table->timestamps();
 
-            $table->foreign('Funcionario_Id')->references('id')->on('Funcionarios')->onDelete('cascade');
+
         });
     }
 

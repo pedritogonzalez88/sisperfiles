@@ -15,14 +15,11 @@ class CreateEstudiosRealizadosTable extends Migration
     {
         Schema::create('estudios_realizados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('Funcionario_id');
             $table->string('Institucion', 100);
             $table->date('FechaInicio');
             $table->date('FechaFin');
             $table->string('Titulo', 100);
             $table->timestamps();
-
-            $table->foreign('Funcionario_id')->references('id')->on('Funcionarios')->onDelete('cascade');
         });
     }
 
