@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return View('Welcome');
 });
+Route::get('/funcionario', function () {
+    return view('perfiles.VistaFunc');
+});
+
+Route::post('/funcionario','FuncionarioController@store')->name('func.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

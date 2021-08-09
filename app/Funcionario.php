@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Funcionario extends Model
 {
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'Cedula', 'Nombre', 'Apellido','ImagenURL','telefono','fechaNacimiento','Sexo',
+        'Direccion','correo','TipoFuncionario','EstadoCivil','EmailParticular','Observaciones',
+        'Activo','Pasaporte','Registro','Categoria','RUC','Situacion_Laboral','vivienda',
+    ];
 
     public function ciudad(){
 
@@ -49,6 +59,20 @@ class Funcionario extends Model
     public function estudio_realizado()
     {
         return $this->hasMany(Estudio_Realizado::class);
+    }
+    public function emergencia()
+    {
+        return $this->belongsTo(Emergencia::class);
+    }
+
+    public function administrativo()
+    {
+        return $this->hasMany(Administrativo::class);
+    }
+
+    public function experiencia_laboral()
+    {
+        return $this->hasMany(Experciencia_Laboral::class);
     }
 
 }

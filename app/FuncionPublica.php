@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class FuncionPublica extends Model
 {
-    public function getfuncionario(){
-        return $this->belongsToMany(Funcionario::class);
+    protected $fillable = [
+        'Nombre','Apellido','Cedula','Entidad','Cargo'
+    ];
+
+    public function funcionario(){
+        return $this->hasMany(Funcionario::class);
     }
 }

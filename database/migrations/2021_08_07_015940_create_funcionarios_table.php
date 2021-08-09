@@ -18,6 +18,11 @@ class CreateFuncionariosTable extends Migration
             $table->unsignedInteger('Cedula');
             $table->string('Nombre',60);
             $table->string('Apellido',60);
+            $table->string('Sexo',60);
+            $table->string('Pasaporte',60);
+            $table->string('Registro',60);
+            $table->string('Categoria',60);
+            $table->string('RUC');
             $table->string('ImagenURL');
             $table->string('telefono',20);
             $table->date('fechaNacimiento');
@@ -26,6 +31,9 @@ class CreateFuncionariosTable extends Migration
             $table->string('TipoFuncionario');
             $table->string('EstadoCivil',60);
             $table->string('EmailParticular',100);
+            $table->string('Celular',15);
+            $table->string('Situacion_Laboral',100);
+            $table->string('vivienda',60);
             $table->text('Observaciones');
             $table->boolean('Activo');
             $table->timestamps();
