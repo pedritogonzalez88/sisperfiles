@@ -14,7 +14,7 @@ class PaisController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -46,9 +46,7 @@ class PaisController extends Controller
      */
     public function show(Pais $pais)
     {
-        return view('pais.show', [
-            'pais' => Pais::findOrFail($pais)
-        ]);
+        //
     }
 
     /**

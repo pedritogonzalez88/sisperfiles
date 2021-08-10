@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @inject('servicesPais', 'App\Services\ServicePais')
 <div class="container">
-    <form method="post" action="{{ route('func.store') }}">
+    <form method="post" action="">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -128,8 +129,13 @@
                                                 <i class="fa fa-flag"></i>
                                             </span>
                                         </div>
-                                        <select name="pais" class="form-control">
-                                            <option value="">--Seleccione---</option>
+                                        <select id="servicePais" name="pais_id" class="form-control">
+                                            <option value="">---Selecciona---</option>
+                                            @foreach ($servicePais->get() as $index => $servicePais)
+                                                <option value="{{ $index }}">
+                                                    {{ $servicePais }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

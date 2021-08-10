@@ -15,7 +15,7 @@ class CreateAdministrativoFuncionario extends Migration
     {
         Schema::create('administrativo_funcionario', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('administration_id');
+            $table->unsignedInteger('administrativo_id');
             $table->unsignedBigInteger('funcionario_id');
             $table->timestamps();
         });

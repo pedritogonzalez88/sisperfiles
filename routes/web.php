@@ -14,11 +14,10 @@
 Route::get('/', function () {
 return View('Welcome');
 });
-Route::get('/funcionario', function () {
-    return view('perfiles.VistaFunc');
-});
 
-Route::post('/funcionario','FuncionarioController@store')->name('func.store');
+
+Route::get('/funcionario', 'FuncionarioController@index')->name('funcionario.index');
+Route::post('/funcionario','FuncionarioController@create')->name('funcionario.create');
 
 Auth::routes();
 

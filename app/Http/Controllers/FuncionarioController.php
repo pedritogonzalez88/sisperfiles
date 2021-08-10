@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Funcionario;
+use App\Pais;
 use Illuminate\Http\Request;
 
 class FuncionarioController extends Controller
@@ -14,7 +15,8 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        $paises = Pais::all();
+        return view('create', compact('paises'));
     }
 
     /**
@@ -24,7 +26,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        //
+        $paises = getPaises();
+        return view('funcionario.create', compact('paises'));
     }
 
     /**
@@ -38,6 +41,11 @@ class FuncionarioController extends Controller
         $funcionario = new Funcionario();
         $funcionario->Nombre = $request->nombre;
         $funcionario->Apellido = $request->apellido;
+        $funcionario->Cedula = $request->cedula;
+        $funcionario->ImagenURL = $request->ImagenURL;
+        $funcionario->telefono = $request->telefono;
+        $funcionario->fechaNacimiento = $request->fechaNacimiento;
+        $funcionario->Sexo = $request->sexo;
     }
 
     /**

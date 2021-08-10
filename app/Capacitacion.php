@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Capacitacion extends Model
 {
     protected $fillable = [
-        'Tema','Fecha'
+        'Tema','Fecha',
     ];
 
     public function funcionario()
