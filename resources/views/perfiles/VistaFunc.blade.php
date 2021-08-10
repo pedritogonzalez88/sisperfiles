@@ -348,9 +348,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-6 col-xs-12">
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" for="activo" />
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" name="Activo" checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Activo
                                     </label>
                                 </div>
                             </div>

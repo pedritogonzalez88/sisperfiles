@@ -72,7 +72,7 @@ class Funcionario extends Model
 
     public function experiencia_laboral()
     {
-        return $this->hasMany(Experciencia_Laboral::class);
+        return $this->hasMany(Experiencia_Laboral::class);
     }
 
 }
