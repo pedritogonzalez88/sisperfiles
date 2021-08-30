@@ -22,6 +22,11 @@ class Funcionario extends Model
         'pais','ciudad','departamento','barrios',
     ];
 
+    public function conguges()
+    {
+        return $this->hasMany('App\Conyuge', 'conyuge_id');
+    }
+
     public function familiar()
     {
         return $this->belongsToMany('App\Familiar','familiar_id');

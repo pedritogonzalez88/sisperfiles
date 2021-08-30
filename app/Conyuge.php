@@ -9,11 +9,11 @@ class Conyuge extends Model
     protected $table = 'conyuges';
 
     protected $fillable = [
-        'Nombre','Apellido','Cedula','Sexo','Telefono','Celular',
+        'Nombre','Apellido','Cedula','Sexo','Telefono','Celular','funcionario_id',
     ];
 
     public function funcionario()
     {
-        return $this->hasOne(Funcionario::class, 'funcionario_id');
+        return $this->hasOne('App\Funcionario', 'funcionario_id');
     }
 }

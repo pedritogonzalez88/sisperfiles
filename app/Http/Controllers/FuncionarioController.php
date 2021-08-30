@@ -81,7 +81,7 @@ class FuncionarioController extends Controller
         $funcionario->save();
 
 
-        return redirect()->route('conyuge.create', $funcionario->id);
+        return redirect()->route('conyuge.create', ['id' => $funcionario->id]);
 
     }
 

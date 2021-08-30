@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Conyuge;
 use App\Funcionario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ConyugeController extends Controller
 {
@@ -25,10 +26,10 @@ class ConyugeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create(Request $request)
+    public function create(Request $request, $id)
     {
-        $funcionario_id = $request->get('id');
-        return View('perfiles.Conyuges.create', compact('funcionario_id'));
+        $funcionarios = Funcionario::find($id)->funcionario;
+        return View('perfiles.Conyuges.create', compact('funcionarios'));
     }
 
     public function show(Conyuge $conyuge)
@@ -46,17 +47,22 @@ class ConyugeController extends Controller
 
     public function store(Request $request)
     {
-             /* $conyuge = new Conyuge();
-            $conyuge->Nombre = $request->nombreC;
-            $conyuge->Apellido = $request->apellidoC;
-            $conyuge->Sexo = $request->sexoC;
-            $conyuge->Cedula = $request->cedulaC;
-            $conyuge->Telefono = $request->telefonoC;
-            $conyuge->Celular = $request->celularC;
-            $conyuge->funcionario()->associate($funcionario);
-            $conyuge->save(); */
-            Conyuge::Create($request->all());
+            //$conyuge = Conyuge::create($request->all());
+            //$conyuge->fill($request->all());
+            $input = Input::all();
+            $funcionarioId = (array) array_get($input, 'funcionarioId');
+            $conyuge = new Conyuge();
+            $conyuge->Nombre = $request->nombre;
+            $conyuge->Apellido = $request->apellido;
+            $conyuge->Sexo = $request->sexo;
+            $conyuge->Cedula = $request->cedula;
+            $conyuge->Telefono = $request->telefono;
+            $conyuge->Celular = $request->celular;
+            $conyuge->funcionario_id = $request->funcionarioId;
+            dd($conyuge);
+            //$conyuge->save();
+            //Conyuge::Create($request->all());
 
-            return redirect()->route('conyuge.index',[$Funcionario]);
+            return redirect()->route('Hijo.create', $funcionario->id);
     }
 }
