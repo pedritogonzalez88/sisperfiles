@@ -99,7 +99,7 @@
                             <div class="row">
                                 <div class="form-group">
                                     @foreach($funcionarios as $funcionario)
-                                   <input type="text" disabled class="form-control" name="funcionarioId" value="{{$funcionario->id}}"  />
+                                   <input type="text" disabled class="form-control" name="funcionarioId" value="{{old($funcionario->id)}}"  />
                                    {{--  {!!Form::text('id', $id, array('disabled')) !!} --}}
                                    {{-- {!! Form::text('funcionario_id', array($fun_id->id)) !!} --}}
                                    @endforeach

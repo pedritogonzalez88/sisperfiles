@@ -49,8 +49,8 @@ class ConyugeController extends Controller
     {
             //$conyuge = Conyuge::create($request->all());
             //$conyuge->fill($request->all());
-            $input = Input::all();
-            $funcionarioId = (array) array_get($input, 'funcionarioId');
+            //$input = Input::all();
+            //$funcionarioId = (array) array_get($input, 'funcionarioId');
             $conyuge = new Conyuge();
             $conyuge->Nombre = $request->nombre;
             $conyuge->Apellido = $request->apellido;
