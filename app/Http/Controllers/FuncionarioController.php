@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Funcionario;
 use App\Pais;
+use App\Ciudad;
+use App\Barrio;
+use App\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class FuncionarioController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +21,12 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        $paises = Pais::all();
-        return view('create', compact('paises'));
+        $funcionarios = Funcionario::all();
+        $Pais = Pais::all();
+        $Ciudad = Ciudad::all();
+        $Barrio = Barrio::all();
+        $Departamento = Departamento::all();
+        return View('perfiles.funcionarios.create', compact('Pais','Ciudad','Barrio','Departamento','funcionarios'));
     }
 
     /**
@@ -26,8 +36,8 @@ class FuncionarioController extends Controller
      */
     public function create()
     {
-        $paises = getPaises();
-        return view('funcionario.create', compact('paises'));
+
+        return View('perfiles.funcionarios.create');
     }
 
     /**
@@ -38,14 +48,41 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
+        $img = $request->file('Imagen');
+        $Imgnombre = $img->getClientOriginalName();
+        $img->move('imagenes', $Imgnombre);
+
         $funcionario = new Funcionario();
+        $funcionario->Cedula = $request->cedula;
         $funcionario->Nombre = $request->nombre;
         $funcionario->Apellido = $request->apellido;
-        $funcionario->Cedula = $request->cedula;
-        $funcionario->ImagenURL = $request->ImagenURL;
+        $funcionario->Sexo = $request->sexo;
+        $funcionario->Pasaporte = $request->pasaporte;
+        $funcionario->Registro = $request->registro;
+        $funcionario->Categoria = $request->categoria;
+        $funcionario->RUC = $request->ruc;
+        $funcionario->ImagenURL = $Imgnombre;
         $funcionario->telefono = $request->telefono;
         $funcionario->fechaNacimiento = $request->fechaNacimiento;
-        $funcionario->Sexo = $request->sexo;
+        $funcionario->Direccion = $request->direccion;
+        $funcionario->Correo = $request->correo;
+        $funcionario->TipoFuncionario = $request->tipofuncionario;
+        $funcionario->EstadoCivil = $request->estadoCivil;
+        $funcionario->EmailParticular = $request->emailparticular;
+        $funcionario->Celular = $request->celular;
+        $funcionario->Situacion_Laboral = $request->tipofuncionario;
+        $funcionario->vivienda = $request->vivienda;
+        $funcionario->Observaciones = $request->observaciones;
+        $funcionario->Activo = boolval($request->activo);
+        $funcionario->pais = $request-> pais;
+        $funcionario->ciudad = $request->ciudad;
+        $funcionario->departamento = $request->departamento;
+        $funcionario->barrios = $request->barrio;
+        $funcionario->save();
+
+
+        return redirect()->route('conyuge.create', $funcionario->id);
+
     }
 
     /**
@@ -92,4 +129,6 @@ class FuncionarioController extends Controller
     {
         //
     }
+
+
 }

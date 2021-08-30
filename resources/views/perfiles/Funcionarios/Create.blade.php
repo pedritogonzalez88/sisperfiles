@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @inject('servicesPais', 'App\Services\ServicePais')
+
 <div class="container">
-    <form method="post" action="">
+    <form method="post" action="{{route('funcionario.create')}}" enctype="multipart/form-data">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -83,6 +83,11 @@
                                         </div>
                                         <select name="barrio" class="form-control">
                                             <option value="">---Seleccionar---</option>
+                                            @foreach ($Barrio as $barrio)
+                                                <option>
+                                                    {{ $barrio->Nombre}}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -98,6 +103,11 @@
                                         </div>
                                         <select name="ciudad" class="form-control">
                                             <option value="">--Seleccione---</option>
+                                            @foreach ($Ciudad as $ciudad)
+                                                <option>
+                                                    {{ $ciudad->Nombre}}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -115,6 +125,11 @@
                                         </div>
                                         <select name="departamento" class="form-control">
                                             <option value="">---Selecciona---</option>
+                                            @foreach ($Departamento as $depar)
+                                                <option>
+                                                    {{ $depar->Nombre}}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -129,11 +144,11 @@
                                                 <i class="fa fa-flag"></i>
                                             </span>
                                         </div>
-                                        <select id="servicePais" name="pais_id" class="form-control">
+                                        <select name="pais" class="form-control">
                                             <option value="">---Selecciona---</option>
-                                            @foreach ($servicePais->get() as $index => $servicePais)
-                                                <option value="{{ $index }}">
-                                                    {{ $servicePais }}
+                                            @foreach ($Pais as $pais)
+                                                <option>
+                                                    {{ $pais->Nombre}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -152,7 +167,7 @@
                                                 <i class="fa fa-passport"></i>
                                             </span>
                                         </div>
-                                        <input name="pasaporte" class="form-control" />
+                                        <input type="text" name="pasaporte" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +181,7 @@
                                                 <i class="fa fa-id-card"></i>
                                             </span>
                                         </div>
-                                        <input name="registro" class="form-control" />
+                                        <input type="text" name="registro" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -174,15 +189,14 @@
                         <div class="row">
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-group">
-                                    <label name="categoria"
-                                        class="control-label">Categoria</label>
+                                    <label for="categoria" class="control-label">Categoria</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="fa fa-id-card-alt"></i>
                                             </span>
                                         </div>
-                                        <input name="categoria" class="form-control"
+                                        <input type="text" name="categoria" class="form-control"
                                             placeholder="B, A, C, Particular" />
                                     </div>
                                 </div>
@@ -196,7 +210,7 @@
                                                 <i class="fa fa-id-card"></i>
                                             </span>
                                         </div>
-                                        <input name="ruc" class="form-control" />
+                                        <input type="text" name="ruc" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +226,7 @@
                                                 <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
-                                        <input name="sexo" class="form-control" />
+                                        <input type="text" name="sexo" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -334,7 +348,7 @@
                                                 <i class="fa fa-binoculars"></i>
                                             </span>
                                         </div>
-                                        <input name="Observaciones" class="form-control" />
+                                        <input name="observaciones" class="form-control" />
                                     </div>
                                 </div>
                             </div>
@@ -355,7 +369,7 @@
                             </div>
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" name="Activo" checked>
+                                    <input class="form-check-input" type="checkbox" name="activo" checked>
                                     <label class="form-check-label" for="flexCheckChecked">
                                         Activo
                                     </label>
@@ -375,15 +389,13 @@
                         <div class="form-group">
                             <label for="imagen" class="control-label">FOTO</label>
                             <div class="card">
-                                <img src="~/images/default.png" id="preview" class="img-thumbnail" />
+                                @foreach($funcionarios as $funcionario)
+                                <img src="{{$funcionario->ImagenUrl}}" id="preview" class="img-thumbnail" alt="" />
+                                @endforeach
                             </div>
                             <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFileLang"
-                                        onchange="previewFile()">
-                                    <label for="imagen" class="custom-file-label"
-                                        for="customFileLang">Seleccionar Archivo</label>
-                                </div>
+                                    <input type="file" name="Imagen" class="form-control-file" id="Imagen">
+                                    <label class="input-group-text" for="Imagen"></label>
                             </div>
                         </div>
                     </div>

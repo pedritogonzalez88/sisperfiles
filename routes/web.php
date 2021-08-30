@@ -15,9 +15,12 @@ Route::get('/', function () {
 return View('Welcome');
 });
 
-
-Route::get('/funcionario', 'FuncionarioController@index')->name('funcionario.index');
-Route::post('/funcionario','FuncionarioController@create')->name('funcionario.create');
+Route::get('/pais','PaisController@index')->name('pais.index');
+Route::get('/funcionarios', 'FuncionarioController@index')->name('funcionario.index');
+Route::post('/funcionarios','FuncionarioController@store')->name('funcionario.create');
+Route::get('/conyuges', 'ConyugeController@index')->name('conyuge.index');
+Route::get('/conyuges/create', 'ConyugeController@create')->name('conyuge.create');
+Route::post('/conyuges','ConyugeController@store')->name('conyuge.store');
 
 Auth::routes();
 

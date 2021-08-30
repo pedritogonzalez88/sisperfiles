@@ -1,18 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        @foreach($pais as $paises)
-            <li>{{$pais}}</li>
-        @endforeach
-    </ul>
+@extends('layouts.app')
 
-</body>
-</html>
+@section('content')
+<div class="container">
+    <div class="row">
+        <ul>
+            @foreach($p as $pais)
+                <li>{{$pais->Nombre}}</li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+@endsection

@@ -4,75 +4,65 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Funcionario extends Model
 {
 
+    protected $table = 'funcionarios';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'Cedula', 'Nombre', 'Apellido','ImagenURL','telefono','fechaNacimiento','Sexo',
-        'Direccion','correo','TipoFuncionario','EstadoCivil','EmailParticular','Observaciones',
-        'Activo','Pasaporte','Registro','Categoria','RUC','Situacion_Laboral','vivienda',
+        'Cedula', 'Nombre', 'Apellido','Sexo','Pasaporte','Registro','Categoria',
+        'RUC','ImagenURL','telefono','fechaNacimiento','Direccion','Correo',
+        'TipoFuncionario','EstadoCivil','EmailParticular','Celular','Situacion_Laboral',
+        'vivienda','Observaciones', 'Activo',
+        'pais','ciudad','departamento','barrios',
     ];
 
-    public function ciudad(){
-
-    return $this->belongsTo(Ciudad::class);
-    }
-
-    public function barrio(){
-        return $this->belongsTo(Barrio::class);
-    }
-    public function departamento(){
-        return $this->belongsTo(Departamento::class);
-    }
-    public function pais(){
-        return $this->belongsTo(Pais::class);
-    }
     public function familiar()
     {
-        return $this->hasMany(Familiar::class);
+        return $this->belongsToMany('App\Familiar','familiar_id');
     }
     public function funcionpublica()
     {
-        return $this->hasMany(FuncionPublica::class);
+        return $this->belongsToMany('App\FuncionPublica','funcionpublica_id');
     }
     public function hijo()
     {
-        return $this->hasMany(Hijo::class);
+        return $this->belongsToMany('App\Hijo','hijo_id');
     }
     public function idioma()
     {
-        return $this->hasMany(Idioma::class);
+        return $this->belongsToMany('App\Idioma','idioma_id');
     }
-    public function infomedica()
+    public function info_medica()
     {
-        return $this->belongsTo(Info_Medica::class);
+        return $this->belongsTo('App\Info_Medica','info_medica_id');
     }
-    public function capacitacion()
+    public function capacitaciones()
     {
-        return $this->hasMany(Capacitacion::class);
+        return $this->belongsToMany('App\Capacitacion','capacitacion_id');
     }
     public function estudio_realizado()
     {
-        return $this->hasMany(Estudio_Realizado::class);
+        return $this->belongsToMany('App\Estudio_Realizado','estudio_realizado_id');
     }
     public function emergencia()
     {
-        return $this->belongsTo(Emergencia::class);
+        return $this->belongsTo('App\Emergencia','emergencia_id');
     }
 
-    public function administrativo()
+    public function administrativos()
     {
-        return $this->hasMany(Administrativo::class);
+        return $this->belongsToMany('App\Administrativo','administrativo_id');
     }
 
-    public function experiencia_laboral()
+    public function experiencia_laborales()
     {
-        return $this->hasMany(Experiencia_Laboral::class);
+        return $this->belongsToMany('App\Experiencia_Laboral','experiencia_laboral_id');
     }
 
 }

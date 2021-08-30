@@ -8,7 +8,7 @@ class Departamento extends Model
 {
 
 
-    public function funcionario(){
-        return $this->hasMany(Funcionario::class);
+    public function pais(){
+        return $this->hasOne('App\Pais', 'pais_id');
     }
 }

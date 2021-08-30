@@ -13,6 +13,6 @@ class Info_Medica extends Model
 
     public function funcionario()
     {
-        return $this->belongsTo(Funcionario::class);
+        return $this->hasOne(Funcionario::class, 'FuncionarioId');
     }
 }
