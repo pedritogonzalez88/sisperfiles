@@ -47,6 +47,7 @@ class ConyugeController extends Controller
 
     public function store(Request $request)
     {
+            $funcionario = Funcionario::first()->id;
             //$conyuge = Conyuge::create($request->all());
             //$conyuge->fill($request->all());
             //$input = Input::all();
@@ -58,11 +59,10 @@ class ConyugeController extends Controller
             $conyuge->Cedula = $request->cedula;
             $conyuge->Telefono = $request->telefono;
             $conyuge->Celular = $request->celular;
-            $conyuge->funcionario_id = $request->funcionarioId;
-            dd($conyuge);
-            //$conyuge->save();
+            //dd($conyuge);
+            $funcionario->funcionario()->$conyuge->save();
             //Conyuge::Create($request->all());
 
-            return redirect()->route('Hijo.create', $funcionario->id);
+            return redirect()->route('hijo.create', $funcionario->id);
     }
 }
